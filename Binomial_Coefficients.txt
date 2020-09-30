@@ -1,0 +1,10 @@
+int coef[N][N];
+
+void precompute(int mod = 1e9 + 7) {
+	for(int i = 0; i < N; i ++) {
+		for(int j = 0; j <= i; j ++) {
+			if(j == 0 or j == i) coef[i][j] = 1;
+			else coef[i][j] = (coef[i - 1][j - 1] + coef[i - 1][j]) % mod;
+		}
+	}
+}

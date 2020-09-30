@@ -1,0 +1,20 @@
+int primefac[N];
+
+void precompute() {
+	for(int i = 2; i < N; i ++) {
+		if(!primefac[i]) {
+			for(int j = 1; i * j < N; j ++) {
+				primefac[i * j] = i;
+			}
+		}
+	}
+}
+
+vector<int> getFacs(int x) {
+	vector<int> facs;
+	while(x > 1) {
+		facs.push_back(primefac[x]);
+		x /= primefac[x];
+	}
+	return facs;
+}

@@ -1,0 +1,33 @@
+//adj matrix contains pair of vertex and distance
+//dis contain pair of distance and vertex
+
+int N, total_wt = 0;
+vector< vector< pair<int, int> > > adj;
+vector< pair<int, int> > dis(N, {1e9, -1});
+vector<int> vis(N, false);
+
+vector< pair<int, int> >  prim() {
+	vector< pair<int, int> > ans;
+	dis[0].first = 0;
+	for(int i = 0; i < N; i ++) {
+		int u = -1;
+		for(int j = 0; j < N; j ++) {
+			if(!vis[j] and (u == -1 or (dis[j].first < dis[u].first)))
+				u = j;
+		}
+		if(dis[u].first == 1e9) {
+			return {{-1, -1}};
+		}
+		vis[u] = true;
+		total_wt += dis[u].first;
+		if(dis[u].second != -1) {
+			ans.push_back({u, dis[u].second});
+		}
+		for(auto v : adj[u]) {
+			if(dis[v.first].first > v.second) {
+				dis[v.first] = {v.second, u};
+			}
+		}
+	}
+	return ans;
+}

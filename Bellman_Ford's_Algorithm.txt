@@ -1,0 +1,38 @@
+struct edge {
+	int a, b, cost;
+};
+
+vector<int> dis(N, 1e9), par(N, -1);
+vector<edge> edges;
+int inf;
+int N;
+
+void bellman_ford() {
+	int M = edges.size();
+	bool run = true;
+	while(run) {
+		run = false;
+		for(int i = 0; i < M; i ++) {
+			if(dis[edges[i].a] < inf) {
+				if(dis[edges[i].b] > dis[edges[i].a] + edges[i].cost) {
+					dis[edges[i].b] = dis[edges[i].a] + edges[i].cost;
+					par[edges[i].b] = edges[i].a;
+					run = true;
+				}
+			}
+		}
+	}
+}
+
+//Returns path from source to u or -1 if path does not exist
+
+vector<int> get_path(int u) {
+	if(dis[u] == inf) return {-1};
+	vector<int> path;
+	while(par[u] != -1) {
+		path.push_back(u);
+		u = par[u];
+	}
+	reverse(path.begin(), path.end());
+	return path;
+}

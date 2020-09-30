@@ -1,0 +1,26 @@
+vector< vector< pair<int, int> > > adj;
+vector<int> dis(N, 1e9), p(N, -1);
+
+class cmp {
+	bool operator() (const int a, const int b) const {
+		return dis[a] < dis[b];
+	}
+};
+
+void dijkstra(int s) {
+	dis[s] = 0; p[s] = s;
+	set<int, cmp> st;
+	st.insert(s);
+	while(!st.empty()) {
+		int u = *st.begin();
+		st.erase(st.begin());
+		for(pair<int, int> v : adj[u]) {
+			if(dis[v.first] > dis[u] + v.second) {
+				st.erase(v.first);
+				dis[v.first] = dis[u] + v.second;
+				p[v.first] = u;
+				st.insert(v.first);
+			}
+		}
+	}
+}

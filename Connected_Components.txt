@@ -1,0 +1,23 @@
+vector<int> adj[N];
+vector< vector<int> > comps;
+vector<bool> vis(N, 0);
+
+void dfs(vector<int> &comp, int u) {
+	vis[u] = true;
+	comp.push_back(u);
+	for(auto v : adj[u]) {
+		if(!vis[v]) 
+			dfs(comp, v);
+	}
+}
+
+void get_comps() {
+	for(int i : vis) {
+		if(!i) {
+			vector<int> comp;
+			dfs(comp, i);
+			comps.push_back(comp);
+		}
+	}
+}
+
