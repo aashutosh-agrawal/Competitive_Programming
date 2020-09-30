@@ -7,8 +7,7 @@ I'll keep adding more quality content into this repo as I come across them.
 
 First of all, Let's start with the very basic: Setting up the environment
 
-What I prefer for CP is Visual Studio Code with C++, so here is how to install and set up VS Code.
-
+What I prefer for CP is Visual Studio Code with C++, so here is how to install and set up VS Code.  
 [Video Tutorial of Rachit Jain for setting up VS Code](https://www.youtube.com/watch?v=Y-_3rXgrRAY).
 
 After installing VS Code and setting it up, also install Code Runner Extension from the extensions section, and in its settings.json file, edit the cpp setting and set it to something like this  
@@ -50,6 +49,8 @@ When stuck on a problem, think until you run out of ideas or stop making progres
 Now a few of the resources to help you in your starting journey are here:  
 [CP Handbook](https://cses.fi/book/book.pdf)  
 Learn [Standard Templates Library of C++](https://www.topcoder.com/community/competitive-programming/tutorials/power-up-c-with-the-standard-template-library-part-1/)  
+Learn Algorithms and their implementations from [cp-algorithms](https://cp-algorithms.com/)  
+An awesome list of a lot of [good blogs/resources](https://github.com/lnishan/awesome-competitive-programming)  
 Ashish Gupta's Github Repository of [Codes/Algorithm Implementations](https://github.com/Ashishgup1/Competitive-Coding)  
 
 As you grow, you will learn many new things and come across different valuable resources. (Try to share here as well, as it will be helpful for others as well).
