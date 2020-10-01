@@ -2,6 +2,7 @@
 
 This repository is for people who are already into CP.  
 Here I have collected some precious codes/algorithm implementations most of which are my implementations of the algorithms as I understand it and some of them are inspired from Ashish Gupta's codes or cp-algorithms codes because I couldn't find any better implementation of it (because they are already at their best).  
+
 The motive is to create a repository that can be used as a library of neatly-written algorithm implementations. It may also be used as a code snippets library which may prove to be very useful in coding contests.  
 
 I'll keep adding more quality content into this repo as I come across them.  
