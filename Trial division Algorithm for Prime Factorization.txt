@@ -1,12 +1,11 @@
 #include <bits/stdc++.h> 
-using namespace std;  
-int isPrime(int N){  
+bool isPrime(int N){  
     int i = 2;  
     int k = ceil(sqrt(N)); 
     while(i<= k){ 
         if(N % i == 0) 
-            return 0; 
+            return false; 
         i += 1; 
     } 
-    return 1; 
+    return true; 
 } 
