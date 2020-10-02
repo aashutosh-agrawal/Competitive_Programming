@@ -1,3 +1,5 @@
+//Trial division Algorithm for Prime Factorization
+
 bool isPrime(int N){  
     int i = 2;  
     int k = ceil(sqrt(N)); 
