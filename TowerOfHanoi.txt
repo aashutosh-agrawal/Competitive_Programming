@@ -1,4 +1,0 @@
-int TowerOfHanoi(int n)
-{
-    return (int)pow(2,n)-1;
-}
