@@ -1,0 +1,25 @@
+//A Double Tower of Hanoi contains 2n disks of n different sizes, exactly two of each size.
+
+
+
+//Case 1 :  if disks of equal size are indistinguishable from each other
+
+int doubleTOH_1(int n)
+{
+	return (int)pow(2,(n+1))-2;
+}
+
+
+
+
+//Case 2 : if we have to reproduce the original order of all the equal-size disks in the final arrangement
+
+int doubleTOH_2:(int n)
+{
+	return (int)pow(2,(n+2))-5;
+}
+
+
+
+
+//Reference : http://cs.ioc.ee/cm/20160930-Truu-1.11.pdf
