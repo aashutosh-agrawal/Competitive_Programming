@@ -1,7 +1,7 @@
 vector< vector< pair<int, int> > > adj;
-vector<int> dis(N, 1e9), p(N, -1);
+vector<int> dis, p;
 
-class cmp {
+struct cmp {
 	bool operator() (const int a, const int b) const {
 		return dis[a] < dis[b];
 	}
