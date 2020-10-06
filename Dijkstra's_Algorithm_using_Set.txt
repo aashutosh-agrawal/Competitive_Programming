@@ -3,10 +3,11 @@ vector<int> dis, p;
 
 struct cmp {
 	bool operator() (const int a, const int b) const {
-		return dis[a] < dis[b];
+		if(dis[a] != dis[b])
+			return dis[a] < dis[b];
+		return a < b;
 	}
 };
-
 void dijkstra(int s) {
 	dis[s] = 0; p[s] = s;
 	set<int, cmp> st;
