@@ -76,7 +76,7 @@ int johnson() {
 	for(int i = 0; i < n; i ++) {
 		dijkstra(adj2, i);
 		for(int j = 0; j < dist[i].size(); j ++) {
-			dist[i][j].second = dist[i][j].second + h[j] - h[i];
+			dist[i][j].second = dist[i][j].second + h[dist[i][j].first] - h[i];
 		}
 	}
 	return 0;
