@@ -1,0 +1,83 @@
+/*
+This is the implementation of Johnson's Algorithm that provides "All pair shortest paths" with a better time complexity than Floyd-Warshall for sparse graphs.
+If there exists a negative cycle in the graph, then the johnson function returns -1, otherwise it returns 0 and the new shortest paths are stored in the dist adjacency list.
+
+Reference: https://www.geeksforgeeks.org/johnsons-algorithm/
+*/
+
+vector< vector< pair<int, int> > > adj;
+vector< vector< pair<int, int> > > dist;
+int inf = 1e9;
+
+vector<int> bellman_ford(int s) {
+	int n = adj.size();
+	vector<int> dis(n, inf);
+	dis[s] = 0;
+	bool run = true;
+	int count = 0;
+	while(run) {
+		run = false; count ++;
+		for(int i = 0; i < n; i ++) {
+			for(auto j : adj[i]) {
+				if(dis[i] < inf and dis[i] + j.second < dis[j.first]) {
+					run = true;
+					dis[j.first] = dis[i] + j.second;
+				}
+			}
+		}
+		if(count == n and run) return {};
+	}
+	return dis;
+}
+
+void dijkstra(vector< vector< pair<int, int> > > &adj, int s) {
+	int n = adj.size();
+	vector<int> dis(n, inf);
+	dis[s] = 0;
+	priority_queue< pair<int, int>, vector< pair<int, int> >, greater< pair<int, int> > > pq;
+	pq.push({0, s});
+	while(!pq.empty()) {
+		int w = pq.top().first;
+		int u = pq.top().second;
+		pq.pop();
+		if(dis[u] != w) continue;
+		for(auto v : adj[u]) {
+			if(dis[v.first] > dis[u] + v.second) {
+				dis[v.first] = dis[u] + v.second;
+				pq.push({dis[v.first], v.first});
+			}
+		}
+	}
+	for(int i = 0; i < n; i ++) {
+		if(dis[i] != inf and i != s) {
+			dist[s].push_back({i, dis[i]});
+		}
+	}		
+}
+
+int johnson() {
+	int n = adj.size();
+	vector< pair<int, int> > temp(n);
+	for(int i = 0; i < n; i ++) 
+		temp[i] = {i, 0};
+	adj.push_back(temp); 
+	vector<int> h = bellman_ford(n);
+	if(h.empty()) {
+		return -1;
+	}
+	adj.pop_back(); 
+	dist.resize(n);
+	vector< vector< pair<int, int> > > adj2 = adj;
+	for(int i = 0; i < n; i ++) {
+		for(int j = 0; j < adj2[i].size(); j ++) {
+			adj2[i][j].second = adj[i][j].second + h[i] - h[adj[i][j].first];
+		}
+	}
+	for(int i = 0; i < n; i ++) {
+		dijkstra(adj2, i);
+		for(int j = 0; j < dist[i].size(); j ++) {
+			dist[i][j].second = dist[i][j].second + h[j] - h[i];
+		}
+	}
+	return 0;
+}
